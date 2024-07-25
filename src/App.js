@@ -14,25 +14,22 @@ function App() {
   const [loading, setLoading] = React.useState(true);
   
 
-function updatePost() {
+async function updatePost() {
   const hardcodedId = "Bp8eiZfhR0l1pMJxNrYV";
   const postRef = doc(db, "posts", hardcodedId)
+  const post = await getPostById(hardcodedId);
+  console.log(post);
   const newPost = {
-    description: "Finish Frontend Simplified",
-    uid: "1",
-    title: "Land a $300k job"
+  ...post,
+    title: "Land a $400k job"
   };
+  console.log(newPost)
   updateDoc(postRef, newPost);
 }
 
-  /*function createPost() {
-    const post = {
-      title: "Land a $100k job",
-      description: "Finish Frontend Simplified",
-      uid: user.uid,
-    };
-    addDoc(collection(db, "posts"), post)
-  }*/
+
+
+
     function createPost() {
       const post = {
         title: "Finish Interview Section",
